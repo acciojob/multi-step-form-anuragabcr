@@ -23,7 +23,7 @@ const Step = ({ step, onNext, onPrev, onSubmit }) => {
     switch (step) {
       case 1:
         return (
-          <div >
+          <div id='step1'>
             <label htmlFor="first_name">First Name:</label>
             <input type="text" id="first_name" name="firstName" onChange={handleChange} />
             <label htmlFor="last_name">Last Name:</label>
@@ -32,7 +32,7 @@ const Step = ({ step, onNext, onPrev, onSubmit }) => {
         );
       case 2:
         return (
-          <div >
+          <div id='step2'>
             <label htmlFor="model">Car Model:</label>
             <input type="text" id="model" name="model" onChange={handleChange} />
             <label htmlFor="car_price">Car Price:</label>
@@ -41,7 +41,7 @@ const Step = ({ step, onNext, onPrev, onSubmit }) => {
         );
       case 3:
         return (
-          <div >
+          <div id='step3'>
             <label htmlFor="card_info">Card Information:</label>
             <input type="text" id="card_info" name="card_info" onChange={handleChange} />
             <label htmlFor="expiry_date">Expiry Date:</label>
