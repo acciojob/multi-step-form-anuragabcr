@@ -23,7 +23,7 @@ const Step = ({ step, onNext, onPrev, onSubmit }) => {
     switch (step) {
       case 1:
         return (
-          <div id='stem1'>
+          <div id='step1'>
             <label htmlFor="first_name">First Name:</label>
             <input type="text" id="first_name" name="firstName" onChange={handleChange} />
             <label htmlFor="last_name">Last Name:</label>
