@@ -1,13 +1,31 @@
+import React, { useState } from 'react';
+import Step from './Step';
 
-import React from "react";
-import './../styles/App.css';
+function App() {
+  const [currentStep, setCurrentStep] = useState(1);
 
-const App = () => {
+  const handleNext = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
+  const handleSubmit = (formData) => {
+    console.log('Form submitted:', formData);
+  };
+
   return (
-    <div>
-        {/* Do not remove the main div */}
+    <div className="multi-step-form">
+      <Step 
+        step={currentStep} 
+        onNext={handleNext} 
+        onPrev={currentStep > 1 && handlePrev}
+        onSubmit={handleSubmit}
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
