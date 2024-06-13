@@ -57,9 +57,9 @@ const Step = ({ step, onNext, onPrev, onSubmit }) => {
     <form onSubmit={handleSubmit}>
       {renderStepContent()}
       <br />
-      {step > 1 && <button type="button" onClick={onPrev}>Previous</button>}
-      {step < 3 && <button type="button" onClick={onNext}>Next</button>}
-      {step === 3 && <button type="submit">Submit</button>}
+      {step > 1 && <button type="button" id='next' onClick={onPrev} value='Previous'>Previous</button>}
+      {step < 3 && <button type="button" id='previous' onClick={onNext} value='Next'>Next</button>}
+      {step === 3 && <button type="submit" id='submit' value='Submit'>Submit</button>}
     </form>
   );
 };
