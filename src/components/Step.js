@@ -1,66 +1,27 @@
-import React, {useState} from 'react';
+import React from "react";
 
-const Step = ({ step, onNext, onPrev, onSubmit }) => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    model: '',
-    car_price: '',
-    card_info: '',
-    expiry_date: '',
-  });
-
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit(formData);
-  }
-
-  const renderStepContent = () => {
-    switch (step) {
-      case 1:
-        return (
-          <div id='step1'>
-            <label htmlFor="first_name">First Name:</label>
-            <input type="text" id="first_name" name="firstName" onChange={handleChange} />
-            <label htmlFor="last_name">Last Name:</label>
-            <input type="text" id="last_name" name="lastName" onChange={handleChange} />
-          </div>
-        );
-      case 2:
-        return (
-          <div id='step2'>
-            <label htmlFor="model">Car Model:</label>
-            <input type="text" id="model" name="model" onChange={handleChange} />
-            <label htmlFor="car_price">Car Price:</label>
-            <input type="number" id="car_price" name="car_price" onChange={handleChange} />
-          </div>
-        );
-      case 3:
-        return (
-          <div id='step3'>
-            <label htmlFor="card_info">Card Information:</label>
-            <input type="text" id="card_info" name="card_info" onChange={handleChange} />
-            <label htmlFor="expiry_date">Expiry Date:</label>
-            <input type="date" id="expiry_date" name="expiry_date" onChange={handleChange} />
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
-
+const Step = (props) => {
   return (
-    <form onSubmit={handleSubmit}>
-      {renderStepContent()}
+   <><form id={props.step}>
+      <h1>{props.title}</h1>
+      <input id={props.id1} placeholder={props.placeholder1}></input>
       <br />
-      {step > 1 && <button type="button" id='next' onClick={onPrev} value='Previous'>Previous</button>}
-      {step < 3 && <button type="button" id='previous' onClick={onNext} value='Next'>Next</button>}
-      {step === 3 && <button type="submit" id='submit' value='Submit'>Submit</button>}
+      <input id={props.id2} placeholder={props.placeholder2}></input>
+      <br></br>
+      {props.step !== "step3" && (
+        <button type="button" onClick={(e) => props.handleButtonClick(e, "next")}>Next</button>
+      )}
+      {props.step !== "step1" && (
+        <button type="button" onClick={(e) => props.handleButtonClick(e, "previous")}>Previous</button>
+      )}
+      {props.step === "step3" && (
+        <button type="button" onClick={(e) => e.preventDefault()}>Submit</button>
+      )}
+      
     </form>
+    <form id="step1"></form>
+    <form id="step2"></form>
+    <form id="step3"></form></>
   );
 };
 

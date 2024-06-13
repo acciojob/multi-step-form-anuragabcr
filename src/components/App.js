@@ -1,31 +1,54 @@
-import React, { useState } from 'react';
-import Step from './Step';
+import React, { useState } from "react";
+import Step from "./Step";
 
-function App() {
-  const [currentStep, setCurrentStep] = useState(1);
+const App = () => {
+  const [step, setStep] = useState(1);
 
-  const handleNext = () => {
-    setCurrentStep(currentStep + 1);
-  };
-
-  const handlePrev = () => {
-    setCurrentStep(currentStep - 1);
-  };
-
-  const handleSubmit = (formData) => {
-    console.log('Form submitted:', formData);
-  };
-
+  function handleButtonClick(e, action) {
+    e.preventDefault();
+    if (action === "next" && step < 3) {
+      setStep(step + 1);
+    } else if (action === "previous" && step > 1) {
+      setStep(step - 1);
+    }
+  }
   return (
-    <div className="multi-step-form">
-      <Step 
-        step={currentStep} 
-        onNext={handleNext} 
-        onPrev={currentStep > 1 && handlePrev}
-        onSubmit={handleSubmit}
-      />
+    <div>
+      {step === 1 && (
+          <Step 
+            title="Customer Details"
+            id1="first_name"
+            id2="last_name"
+            placeholder1="First Name"
+            placeholder2="Last Name"
+            handleButtonClick={handleButtonClick}
+            step="step1"
+          />
+        )}
+        {step === 2 && (
+          <Step 
+            title="Car Details"
+            id1="model"
+            id2="car_price"
+            placeholder1="Car Model"
+            placeholder2="Car Price"
+            handleButtonClick={handleButtonClick}
+            step="step2"
+          />
+        )}
+        {step === 3 && (
+          <Step 
+            title="Payment Details"
+            id1="card_info"
+            id2="expiry_date"
+            placeholder1="Card Info"
+            placeholder2="Expiry Date"
+            handleButtonClick={handleButtonClick}
+            step="step3"
+          />
+        )}
     </div>
   );
-}
+};
 
 export default App;
