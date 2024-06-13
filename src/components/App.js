@@ -24,6 +24,9 @@ function App() {
         onPrev={currentStep > 1 && handlePrev}
         onSubmit={handleSubmit}
       />
+      <div id='step1'></div>
+      <div id='step2'></div>
+      <div id='step3'></div>
     </div>
   );
 }
